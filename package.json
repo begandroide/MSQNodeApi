@@ -1,0 +1,41 @@
+{
+  "name": "msqnodeapi",
+  "version": "1.0.0",
+  "description": "MySql Node Orm Stack",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "start:dev": "nodemon",
+    "build": "rimraf ./build && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/begandroide/MSQNodeApi.git"
+  },
+  "author": "Benjamín Gautier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/begandroide/MSQNodeApi/issues"
+  },
+  "homepage": "https://github.com/begandroide/MSQNodeApi#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "boom": "^7.3.0",
+    "fastify": "^2.15.0",
+    "fastify-cookie": "^3.6.1",
+    "fastify-cors": "^3.0.3",
+    "fastify-jwt": "^1.4.0",
+    "fastify-swagger": "^2.6.0",
+    "mssql": "^6.2.0",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/boom": "^7.3.0",
+    "@types/node": "^14.0.13",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.9.5"
+  }
+}
