@@ -1,6 +1,7 @@
 export const Options = {
 	routePrefix: '/documentation',
 	exposeRoute: true,
+	enableArithAbort: false,
 	swagger: {
 		info: {
 			title: 'My first API',
