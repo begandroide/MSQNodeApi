@@ -1,4 +1,7 @@
-exports.up = function(knex, Promise) {
+import * as Knex from "knex";
+
+
+export async function up(knex: Knex): Promise<any> {
     return knex.schema
       .createTable("user", function(table) {
         table.increments("id").primary();
@@ -7,9 +10,10 @@ exports.up = function(knex, Promise) {
         table.bigInteger("createdAt").notNullable();
         table.bigInteger("updatedAt").notNullable();
       });
-  };
-  
-  exports.down = function(knex, Promise) {
-    return knex.schema
-      .dropTableIfExists("user");
-  };
+}
+
+
+export async function down(knex: Knex): Promise<any> {
+    return knex.schema.dropTableIfExists("user");
+}
+
