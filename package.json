@@ -11,7 +11,11 @@
     "dev": "concurrently \"npm run build:watch\" \"npm run start:watch\"",
     "start": "node -r dotenv/config dist/index.js",
     "start:dev": "nodemon -r dotenv/config dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    
+    "knex:migrate:make": "npx knex --knexfile ./knexfile.ts -x ts migrate:make",
+    "knex:migrate:latest": "npx knex --knexfile ./knexfile.ts migrate:latest",
+    "knex:migrate:rollback": "npx knex --knexfile ./knexfile.ts migrate:rollback"
   },
   "repository": {
     "type": "git",
@@ -35,7 +39,6 @@
     "fastify-swagger": "^2.6.0",
     "knex": "^0.21.1",
     "mssql": "^6.2.0",
-    "mysql": "^2.18.1",
     "nodemon": "^2.0.4",
     "objection": "^2.2.0",
     "ts-node": "^8.10.2"
