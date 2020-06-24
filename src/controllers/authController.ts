@@ -3,8 +3,6 @@ import { ServerResponse } from 'http';
 import { User } from "../models";
 import boom from 'boom';
 import bcrypt from 'bcrypt';
-import secret from '../config/auth.config';
-import fastifyJWT from "fastify-jwt";
 import app from "..";
 
 //obtener todos los usuarios
