@@ -8,12 +8,7 @@ import secretAuth from './config/auth.config';
 import routes from './routes';
 import { config } from './config';
 import { initializeDB } from './database';
-require('dotenv').config();
-console.log(require('dotenv').config())
-
-if (!process.env.DATABASE_PORT) {
-	process.exit(1);
-}
+// require('dotenv').config();
 
 const app = fastify.default({logger: true});
 app.register(swagger, Options);
