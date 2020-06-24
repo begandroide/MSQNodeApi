@@ -1,9 +1,6 @@
 import Knex from "knex";
-import { timeStamp } from "console";
 
-type MySqlConnectionConfigExtended = Knex.MySqlConnectionConfig & {options?: {encrypt: true, enableArithAbort: true}};
-
-export function createConnection(config: MySqlConnectionConfigExtended) {
+export function createConnection(config: Knex.MsSqlConnectionConfig) {
   return Knex({
     client: "mssql",
     useNullAsDefault: true,
