@@ -16,3 +16,15 @@ Mysql + Node + Fastify + Swagger
 
 ## Main Goal: :checkered_flag:
 
+Develop a RestfulApi written in NodeJs as Bussines Service Layer, handle session and authentication between user and API, also user Swagger as API UI. 
+Play with Migrations.
+
+## Technology used :diamond_shape_with_a_dot_inside:
+
+- Fastify
+- Swagger
+- Knex
+- dotenv
+- mssql
+- nodemon
+- objection
