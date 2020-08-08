@@ -4,12 +4,11 @@ export const SignupSchema = {
 	summary: 'Creates new user with given values',
 	body: {
 		type: 'object',
+		required: ['id_usuario', 'nombre', 'contrasena'],
 		properties: {
-			username: { type: 'string' },
-			name: { type: 'string' },
-			surname: { type: 'string' },
-            email: { type: 'string' },
-            password: {type: 'string'}
+			id_usuario: { type: 'string', maxLength: 10},
+			nombre: { type: 'string', maxLength: 30 },
+			contrasena: { type: 'string', maxLength: 10 }
 		},
 	},
 	response: {
@@ -17,14 +16,26 @@ export const SignupSchema = {
 			description: 'Successful response',
 			type: 'object',
 			properties: {
-				_id: { type: 'string' },
-				username: { type: 'string' },
-				name: { type: 'string' },
-				surname: { type: 'string' },
-                email: { type: 'string' },
-				__v: { type: 'number' },
+				estado: { type: 'number' },
+				mensaje: { type: 'string' }
 			},
+			example: {
+				estado: 1,
+				mensaje: 'Registro con Exito!'
+			}
 		},
+		403: {
+			description: 'Error response',
+			type: 'object',
+			properties: {
+				estado: { type: 'number' },
+				mensaje: { type: 'string' }
+			},
+			example: {
+				estado: 3,
+				mensaje: 'Usuario ya existe'
+			}
+		}
 	},
 };
 export const LoginSchema = {

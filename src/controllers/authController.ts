@@ -5,7 +5,7 @@ import boom from 'boom';
 import bcrypt from 'bcrypt';
 import app from "..";
 
-//obtener todos los usuarios
+/// Login Request
 export const login = async (req: FastifyRequest, reply: FastifyReply<ServerResponse>) => {
 	try {
         var user = await User.query().findOne({
@@ -16,7 +16,7 @@ export const login = async (req: FastifyRequest, reply: FastifyReply<ServerRespo
         }
         var passwordIsValid = bcrypt.compareSync(
             req.body.password,
-            'password'
+            user.password
           );
     
         if (!passwordIsValid) {
@@ -45,21 +45,25 @@ export const login = async (req: FastifyRequest, reply: FastifyReply<ServerRespo
 	}
 };
 
+/// Signup Request
 export const signup = async (req: FastifyRequest, reply: FastifyReply<ServerResponse>) => {
     try {
         let body = req.body;
-        // const user = new User({
-        //     username: body.username,
-        //     email: body.email,
-        //     password: bcrypt.hashSync(body.password, 8),
-        //     name: body.name,
-        //     surname: body.surname
-        //   });
-        // user.save((err, user) => {
+        const user = new User();
+        user.name = body.nombre;
+        user.id_user = body.id_usuario;
+        user.password = bcrypt.hashSync(body.contrasena, 0); 
+        const userUp = (await User.query().insert(user).onError(err => {
+          reply.status(500).send({message: err});
+        }));
+
+        if (userUp) {
+          reply.send({ message: "User was registered successfully!" });
+        }
+
+        //           await user.save((err, user) => {
         //     if(err){
-        //         reply.status(500).send({message: err});
         //     } else {
-        //         reply.send({ message: "User was registered successfully!" });
         //     }
         // })
         return await reply.code(204);

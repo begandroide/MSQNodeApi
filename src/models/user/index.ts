@@ -3,13 +3,14 @@ import { toTime, toDate } from "../utils";
 
 export class User extends Model {
     readonly id!: string;
-    email!: string;
+    id_user!: string;
+    name!: string;
     password!: string;
     createdAt?: Date;
     updatedAt?: Date;
 
     static get tableName() {
-        return "user"
+        return "userApi"
     }
 
     $beforeInsert() {
@@ -33,5 +34,9 @@ export class User extends Model {
         toTime(json, "createdAt");
         toTime(json, "updatedAt");
         return json;
+    }
+
+    save() {
+        return super.$transaction().insert(this);
     }
 }

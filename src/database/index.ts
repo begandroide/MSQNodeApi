@@ -1,8 +1,7 @@
 import { createConnection } from "./connect";
 import { Model } from "objection";
-
-let isDbInit = false;
 require('dotenv').config();
+let isDbInit = false;
 
 const connection = createConnection({
     user: process.env.DATABASE_USER,

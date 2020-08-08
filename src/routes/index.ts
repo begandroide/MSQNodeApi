@@ -2,16 +2,18 @@ import { RouteOptions } from "fastify";
 import * as authController from '../controllers/authController';
 import { SignupSchema, LoginSchema } from "./documentation/authApi";
 
+const apiPrefix: string = '/apirest2/v2/'; 
+
 const signupRoute: RouteOptions = {
   method: 'POST',
-  url: '/api/auth/signup',
+  url: apiPrefix + 'usuarios/registro',
   handler: authController.signup,
   schema: SignupSchema
 }
 
 const loginRoute: RouteOptions = {
   method: 'POST',
-  url: '/api/auth/login',
+  url: apiPrefix + 'usuarios/login',
   handler: authController.login,
   schema: LoginSchema
 }
